@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market & Weather - SmartAgri AI</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🌾</span>
+                <span>SmartAgri AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="chat.html" class="nav-link">Chat</a></li>
+                <li><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li><a href="market.html" class="nav-link active">Market</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <!-- Language selector and speaker controls -->
+            <div class="toolbar">
+                <div class="language-selector">
+                    <select id="chatLang" class="language-dropdown" aria-label="Chat language">
+                        <option value="en">🌐 English</option>
+                        <option value="hi">🌐 हिन्दी</option>
+                        <option value="bn">🌐 বাংলা</option>
+                    </select>
+                </div>
+                <button id="speakerToggle" class="speaker-button" title="Toggle Text-to-Speech" aria-label="Speaker toggle">
+                    🔊
+                </button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <header class="page-header">
+                <h1>Market & Weather</h1>
+                <p>Real-time prices and forecasts</p>
+            </header>
+
+            <div class="market-grid">
+                <!-- Market Prices -->
+                <section class="market-section">
+                    <h2>Market Prices</h2>
+                    <div class="prices-list">
+                        <div class="price-card">
+                            <div class="price-header">
+                                <h3>Wheat</h3>
+                                <span class="trend up">↑ +2.3%</span>
+                            </div>
+                            <p class="price">₹2,450 per quintal</p>
+                            <p class="price-time">Updated 2 hours ago</p>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-header">
+                                <h3>Rice</h3>
+                                <span class="trend up">↑ +1.8%</span>
+                            </div>
+                            <p class="price">₹3,200 per quintal</p>
+                            <p class="price-time">Updated 2 hours ago</p>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-header">
+                                <h3>Cotton</h3>
+                                <span class="trend down">↓ -0.5%</span>
+                            </div>
+                            <p class="price">₹5,800 per quintal</p>
+                            <p class="price-time">Updated 2 hours ago</p>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-header">
+                                <h3>Maize</h3>
+                                <span class="trend up">↑ +3.1%</span>
+                            </div>
+                            <p class="price">₹1,950 per quintal</p>
+                            <p class="price-time">Updated 2 hours ago</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Enhanced Weather Forecast -->
+                <section class="weather-section">
+                    <div class="weather-header">
+                        <h2>7-Day Forecast</h2>
+                        <div class="weather-controls">
+                            <!-- Added locate button for geolocation -->
+                            <button id="locateBtn" class="locate-btn" title="Get current location" aria-label="Locate me">📍 Locate me</button>
+                            <input type="text" id="locationInput" placeholder="Enter city name" class="location-input" aria-label="Location input">
+                            <button id="fetchWeatherBtn" class="fetch-weather-btn" aria-label="Get weather">Get Weather</button>
+                        </div>
+                    </div>
+                    <div id="weatherContainer" class="weather-list">
+                        <div class="weather-card">
+                            <h4>Monday</h4>
+                            <p class="weather-icon">☀️</p>
+                            <p class="temp">28°C / 18°C</p>
+                            <p class="condition">Sunny</p>
+                        </div>
+                        <div class="weather-card">
+                            <h4>Tuesday</h4>
+                            <p class="weather-icon">⛅</p>
+                            <p class="temp">26°C / 16°C</p>
+                            <p class="condition">Partly Cloudy</p>
+                        </div>
+                        <div class="weather-card">
+                            <h4>Wednesday</h4>
+                            <p class="weather-icon">🌧️</p>
+                            <p class="temp">22°C / 14°C</p>
+                            <p class="condition">Rainy</p>
+                        </div>
+                        <div class="weather-card">
+                            <h4>Thursday</h4>
+                            <p class="weather-icon">☁️</p>
+                            <p class="temp">24°C / 15°C</p>
+                            <p class="condition">Cloudy</p>
+                        </div>
+                        <div class="weather-card">
+                            <h4>Friday</h4>
+                            <p class="weather-icon">☀️</p>
+                            <p class="temp">27°C / 17°C</p>
+                            <p class="condition">Sunny</p>
+                        </div>
+                        <div class="weather-card">
+                            <h4>Saturday</h4>
+                            <p class="weather-icon">☀️</p>
+                            <p class="temp">29°C / 19°C</p>
+                            <p class="condition">Sunny</p>
+                        </div>
+                        <div class="weather-card">
+                            <h4>Sunday</h4>
+                            <p class="weather-icon">⛅</p>
+                            <p class="temp">25°C / 16°C</p>
+                            <p class="condition">Partly Cloudy</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SmartAgri AI</h4>
+                <p>Empowering farmers with AI-driven insights</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SmartAgri AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+2025-11-06 23:40:51 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-06 23:40:51 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:21:31 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:28:42 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:28:46 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:33:59 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:33:59 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:46:17 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:47:01 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/chat"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 125, in chat
+    log_external_api_call("groq", "/chat/completions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 00:49:56 | smartagri_server.errors | ERROR | <module>:63 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 60, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:50:15 | smartagri_server.errors | ERROR | <module>:63 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 60, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:50:29 | smartagri_server.errors | ERROR | <module>:63 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 60, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:50:30 | smartagri_server.errors | ERROR | <module>:63 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 60, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 00:50:39 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/chat"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 131, in chat
+    log_external_api_call("groq", "/chat/completions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 00:50:53 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/chat"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 131, in chat
+    log_external_api_call("groq", "/chat/completions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 00:51:35 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 01:57:49 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 01:58:05 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/chat"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 145, in chat
+    log_external_api_call("groq", "/chat/completions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 01:58:17 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/chat"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 145, in chat
+    log_external_api_call("groq", "/chat/completions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 01:58:28 | smartagri_server.errors | ERROR | <module>:61 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 58, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 15:34:33 | smartagri_server.errors | ERROR | <module>:62 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 59, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 15:34:35 | smartagri_server.errors | ERROR | <module>:62 | Failed to load crop recommendation model: No module named 'sklearn'
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 59, in <module>
+    crop_model = joblib.load("model/crop_recommender.pkl")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+          ^^^^^^^^^^
+  File "C:\Users\obaid\Downloads\code (4)\venv\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+  File "C:\Python312\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'sklearn'
+2025-11-07 16:23:19 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/analyze_plant", "stage": "processing"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 392, in analyze_plant
+    log_external_api_call("plantid", "/health_assessment", response.status_code, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 22:38:13 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/stt"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 421, in speech_to_text
+    log_external_api_call("groq", "/audio/transcriptions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 22:38:21 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/stt"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 421, in speech_to_text
+    log_external_api_call("groq", "/audio/transcriptions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 22:38:34 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/stt"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 421, in speech_to_text
+    log_external_api_call("groq", "/audio/transcriptions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-07 22:38:40 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/stt"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 421, in speech_to_text
+    log_external_api_call("groq", "/audio/transcriptions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2025-11-08 16:13:14 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/stt"}
+Traceback (most recent call last):
+  File "C:\Users\obaid\Downloads\code (4)\server.py", line 421, in speech_to_text
+    log_external_api_call("groq", "/audio/transcriptions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2026-03-16 00:14:55 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/tts"}
+Traceback (most recent call last):
+  File "D:\code(4)\server.py", line 500, in text_to_speech
+    log_external_api_call("elevenlabs", "/text-to-speech", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2026-03-16 00:19:45 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/tts"}
+Traceback (most recent call last):
+  File "D:\code(4)\server.py", line 495, in text_to_speech
+    log_external_api_call("elevenlabs", "/text-to-speech", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2026-03-16 00:21:36 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/tts"}
+Traceback (most recent call last):
+  File "D:\code(4)\server.py", line 495, in text_to_speech
+    log_external_api_call("elevenlabs", "/text-to-speech", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2026-03-16 00:22:44 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/tts"}
+Traceback (most recent call last):
+  File "D:\code(4)\server.py", line 495, in text_to_speech
+    log_external_api_call("elevenlabs", "/text-to-speech", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2026-03-16 00:23:12 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/tts"}
+Traceback (most recent call last):
+  File "D:\code(4)\server.py", line 495, in text_to_speech
+    log_external_api_call("elevenlabs", "/text-to-speech", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given

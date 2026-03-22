@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartAgri AI</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(45, 159, 96, 0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .login-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1100px;
+            width: 100%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-hero {
+            background: linear-gradient(135deg, rgba(45, 159, 96, 0.25) 0%, rgba(34, 163, 68, 0.15) 100%);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+        .hero-icon {
+            font-size: 6rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .login-hero h1 {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .login-hero p { color: var(--muted); font-size: 1.15rem; line-height: 1.7; margin-bottom: 2rem; }
+        .login-form-section { padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+        .login-form-section h2 { color: var(--accent); margin-bottom: 0.5rem; font-size: 2.2rem; font-weight: 700; }
+        .login-form-section .subtitle { color: var(--muted); margin-bottom: 2.5rem; font-size: 1rem; }
+        .login-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-group { display: flex; flex-direction: column; position: relative; }
+        .form-group label { color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .input-wrapper { position: relative; }
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .form-group input {
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 1rem 1rem 1rem 3rem;
+            font-size: 1rem;
+            background: var(--glass-2);
+            color: var(--muted);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(45, 159, 96, 0.1);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover { color: var(--accent); }
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-top: -0.5rem; }
+        .remember-me { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+        .remember-me input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent); }
+        .remember-me label { color: var(--muted); font-size: 0.9rem; cursor: pointer; }
+        .forgot-password {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .forgot-password:hover { color: var(--accent-3); text-decoration: underline; }
+        .login-button {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-3) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 1.1rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .login-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 159, 96, 0.4);
+        }
+
+        .login-button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .divider { display: flex; align-items: center; gap: 1rem; margin: 1.75rem 0; }
+        .divider-line { flex: 1; height: 1px; background: var(--glass-border); }
+        .divider-text { color: var(--muted); font-size: 0.9rem; }
+        .signup-link { text-align: center; margin-top: 2rem; color: var(--muted); font-size: 0.95rem; }
+        .signup-link a { color: var(--accent); text-decoration: none; font-weight: 700; transition: color 0.3s ease; }
+        .signup-link a:hover { color: var(--accent-3); text-decoration: underline; }
+        .error-message { color: #ff6b6b; font-size: 0.85rem; margin-top: 0.35rem; display: none; font-weight: 500; }
+        .error-message.show { display: block; animation: shake 0.3s ease; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .form-status {
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            margin-bottom: 1rem;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-status.show { display: block; }
+        .form-status.success { background: rgba(76, 175, 80, 0.2); color: #4caf50; border: 1px solid #4caf50; }
+        .form-status.error { background: rgba(244, 67, 54, 0.2); color: #f44336; border: 1px solid #f44336; }
+
+        @media (max-width: 968px) {
+            .login-wrapper { grid-template-columns: 1fr; max-width: 500px; }
+            .login-hero { padding: 3rem 2rem; }
+            .login-hero h1 { font-size: 2.2rem; }
+            .hero-icon { font-size: 4.5rem; }
+            .login-form-section { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-wrapper">
+            <div class="login-hero">
+                <div class="hero-content">
+                    <div class="hero-icon">🌱</div>
+                    <h1>SmartAgri AI</h1>
+                    <p>Empowering farmers with AI-driven insights for sustainable agriculture and better crop management.</p>
+                </div>
+            </div>
+
+            <div class="login-form-section">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Login to access your farming dashboard</p>
+
+                <div id="formStatus" class="form-status"></div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📧</span>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                        </div>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                            <button type="button" class="password-toggle" id="passwordToggle">👁️</button>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password" id="forgotPassword">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-button" id="loginButton">Login to Dashboard</button>
+                </form>
+
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">or</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <div class="signup-link">
+                    Don't have an account? <a href="signup.html">Sign up here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/firebase_config.js"></script>
+    <script>
+        // Wait for Firebase to be initialized (it's loaded by firebase_config.js)
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Check if firebase is available. If not, wait a bit
+            // This ensures firebase_config.js has run
+            if (typeof firebase === 'undefined' || !firebase.auth) {
+                console.error("Firebase not initialized. Make sure firebase_config.js is loaded correctly.");
+                // You might add a small delay and retry, but checking load order is better
+                return; 
+            }
+
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const loginButton = document.getElementById('loginButton');
+            const formStatus = document.getElementById('formStatus');
+            const passwordToggle = document.getElementById('passwordToggle');
+
+            // Password toggle
+            passwordToggle.addEventListener('click', () => {
+                const type = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.type = type;
+                passwordToggle.textContent = type === 'password' ? '👁️' : '🙈';
+            });
+
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function showError(inputId, message) {
+                const errorElement = document.getElementById(`${inputId}Error`);
+                errorElement.textContent = message;
+                errorElement.classList.add('show');
+                document.getElementById(inputId).style.borderColor = '#ff6b6b';
+            }
+
+            function clearError(inputId) {
+                const errorElement = document.getElementById(`${inputId}Error`);
+                errorElement.classList.remove('show');
+                document.getElementById(inputId).style.borderColor = '';
+            }
+
+            function showStatus(message, type) {
+                formStatus.textContent = message;
+                formStatus.className = `form-status ${type} show`;
+                if (type !== 'success') {
+                    setTimeout(() => formStatus.classList.remove('show'), 5000);
+                }
+            }
+
+            function clearAllErrors() {
+                clearError('email');
+                clearError('password');
+            }
+
+            function getFriendlyErrorMessage(errorCode) {
+                switch (errorCode) {
+                    case 'auth/invalid-email':
+                        return 'Invalid email address format.';
+                    case 'auth/user-disabled':
+                        return 'This account has been disabled.';
+                    case 'auth/user-not-found':
+                        return 'No account found with this email. Please sign up.';
+                    case 'auth/wrong-password':
+                        return 'Incorrect password. Please try again.';
+                    case 'auth/invalid-credential':
+                        return 'Invalid email or password. Please check and try again.';
+                    case 'auth/too-many-requests':
+                        return 'Too many failed attempts. Please try again later.';
+                    case 'auth/network-request-failed':
+                        return 'Network error. Please check your connection.';
+                    default:
+                        return 'Login failed. Please try again.';
+                }
+            }
+
+            emailInput.addEventListener('input', () => clearError('email'));
+            passwordInput.addEventListener('input', () => clearError('password'));
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearAllErrors();
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+
+                let isValid = true;
+
+                if (!email) {
+                    showError('email', 'Email is required');
+                    isValid = false;
+                } else if (!validateEmail(email)) {
+                    showError('email', 'Please enter a valid email address');
+                    isValid = false;
+                }
+
+                if (!password) {
+                    showError('password', 'Password is required');
+                    isValid = false;
+                } else if (password.length < 6) {
+                    showError('password', 'Password must be at least 6 characters');
+                    isValid = false;
+                }
+
+                if (!isValid) return;
+
+                loginButton.disabled = true;
+                loginButton.textContent = '🔄 Logging in...';
+
+                try {
+                    // Use Firebase directly
+                    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+                    
+                    showStatus('✓ Login successful! Redirecting to dashboard...', 'success');
+                    
+                    // Remember me functionality
+                    const rememberMe = document.getElementById('remember').checked;
+                    if (rememberMe) {
+                        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                    } else {
+                        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+                    }
+                    
+                    // The onAuthStateChanged in firebase_config.js will handle the redirect
+                    // But we can force it just in case
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                    
+                } catch (error) {
+                    console.error('Login error:', error);
+                    const friendlyMessage = getFriendlyErrorMessage(error.code);
+                    showStatus(`✗ ${friendlyMessage}`, 'error');
+                    loginButton.disabled = false;
+                    loginButton.textContent = 'Login to Dashboard';
+                }
+            });
+
+            document.getElementById('forgotPassword').addEventListener('click', async (e) => {
+                e.preventDefault();
+                const email = emailInput.value.trim();
+                
+                if (!email) {
+                    showStatus('Please enter your email address first', 'error');
+                    emailInput.focus();
+                    return;
+                }
+
+                if (!validateEmail(email)) {
+                    showStatus('Please enter a valid email address', 'error');
+                    return;
+                }
+
+                try {
+                    await firebase.auth().sendPasswordResetEmail(email);
+                    showStatus('✓ Password reset email sent! Check your inbox.', 'success');
+                } catch (error) {
+                    console.error('Password reset error:', error);
+                    if (error.code === 'auth/user-not-found') {
+                        showStatus('No account found with this email.', 'error');
+                    } else {
+                        showStatus('Error sending reset email. Please try again.', 'error');
+                    }
+                }
+            });
+
+            // REMOVED: Redundant onAuthStateChanged listener.
+            // firebase_config.js already handles this.
+
+        }); // End DOMContentLoaded
+    </script>
+</body>
+</html>

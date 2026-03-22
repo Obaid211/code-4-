@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommender - SmartAgri AI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <style>
+        :root {
+            --color-navy-bg: #0A192F;
+            --color-green-accent: #28a745;
+            --color-green-glow: rgba(40, 167, 69, 0.5);
+            --color-blue-accent: #00A7E1;
+            --color-blue-glow: rgba(0, 167, 225, 0.3);
+            --color-glass-bg: rgba(255, 255, 255, 0.05);
+            --color-glass-border: rgba(255, 255, 255, 0.15);
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #b0b0b0;
+            --border-radius: 14px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .recommender-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+        }
+
+        .glass-card {
+            background: var(--color-glass-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-glass-border);
+            padding: 2rem 2.5rem;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .recommender-section {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+
+        .recommender-section h2 {
+            text-align: center;
+            color: var(--color-text-primary);
+            margin-top: 0;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .recommender-section > p {
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            padding: 0.9rem;
+            border: 1px solid var(--color-glass-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-family);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--color-text-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.7;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-green-accent);
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3);
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: var(--color-green-accent);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 0 20px var(--color-green-glow);
+        }
+
+        .action-button:hover {
+            background-color: #2eaf47;
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px 5px var(--color-green-glow);
+        }
+
+        .action-button:active {
+            transform: translateY(0);
+        }
+
+        .action-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .results-area {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .results-card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-card h3 {
+            color: var(--color-text-primary);
+            border-bottom: 1px solid var(--color-glass-border);
+            padding-bottom: 0.75rem;
+            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .irrigation-card {
+            background: rgba(0, 167, 225, 0.1);
+            border-color: rgba(0, 167, 225, 0.2);
+            box-shadow: 0 0 30px var(--color-blue-glow);
+        }
+
+        .irrigation-card h3 {
+            color: var(--color-blue-accent);
+            border-color: rgba(0, 167, 225, 0.2);
+        }
+
+        .irrigation-action {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-blue-accent);
+            margin: 1.5rem 0 1rem 0;
+            text-align: center;
+        }
+
+        .irrigation-priority {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .irrigation-priority span {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            background-color: var(--color-blue-accent);
+            color: #fff;
+            margin-left: 10px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .irrigation-explanation {
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 1.5rem;
+            background-color: rgba(0, 167, 225, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .crop-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .crop-item {
+            border: 1px solid var(--color-glass-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 2rem;
+            background: var(--color-glass-bg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .crop-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .crop-details {
+            text-align: left;
+        }
+
+        .crop-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .crop-confidence {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        .crop-confidence strong {
+            color: var(--color-text-primary);
+            font-size: 1.25rem;
+        }
+
+        .crop-fertilizer {
+            font-size: 0.95rem;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .crop-item.top-pick {
+            background: rgba(40, 167, 69, 0.15);
+            border-color: rgba(40, 167, 69, 0.4);
+            grid-template-columns: 1fr;
+            text-align: center;
+            box-shadow: 0 0 40px var(--color-green-glow);
+        }
+
+        .crop-item.top-pick .crop-name {
+            font-size: 2.5rem;
+            color: var(--color-green-accent);
+        }
+
+        .crop-item.top-pick .crop-confidence {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        .crop-item.top-pick .crop-confidence strong {
+            color: var(--color-text-primary);
+            font-size: 1.5rem;
+        }
+
+        .crop-item.top-pick .crop-fertilizer {
+            background-color: rgba(40, 167, 69, 0.1);
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .top-pick-badge {
+            position: absolute;
+            top: -1px;
+            right: 20px;
+            background: var(--color-green-accent);
+            color: #fff;
+            padding: 0.3rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-message {
+            background-color: rgba(200, 50, 50, 0.2);
+            border: 1px solid rgba(200, 50, 50, 0.5);
+            color: #ffcdd2;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .recommender-container {
+                grid-template-columns: 1fr;
+            }
+            .recommender-section {
+                position: static;
+            }
+            .crop-item,
+            .crop-item.top-pick {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .crop-item.top-pick .crop-fertilizer {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🌾</span>
+                <span>SmartAgri AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="chat.html" class="nav-link">Chat</a></li>
+                <li><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li><a href="dashboard.html" class="nav-link active">Recommender</a></li>
+                <li><a href="market.html" class="nav-link">Market</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="toolbar">
+                <div class="language-selector">
+                    <select id="chatLang" class="language-dropdown" aria-label="Chat language">
+                        <option value="en">🌍 English</option>
+                        <option value="hi">🌍 हिन्दी</option>
+                        <option value="bn">🌍 বাংলা</option>
+                    </select>
+                </div>
+                <button id="speakerToggle" class="speaker-button" title="Toggle Text-to-Speech" aria-label="Speaker toggle">
+                    🔊
+                </button>
+                <div class="user-menu">
+                    <button class="user-button" id="userMenuButton">
+                        <span class="user-avatar">👤</span>
+                        <span id="userNameDisplay">User</span>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-header">
+                            <div class="user-name" id="dropdownUserName">User Name</div>
+                            <div class="user-email" id="dropdownUserEmail">user@email.com</div>
+                        </div>
+                        <a href="profile.html" class="dropdown-item">
+                            <span class="dropdown-icon">⚙️</span>
+                            <span>Settings</span>
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <span class="dropdown-icon">👤</span>
+                            <span>Profile</span>
+                        </a>
+                        <button class="dropdown-item logout" id="logoutButton">
+                            <span class="dropdown-icon">🚪</span>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="recommender-container">
+        <section class="recommender-section glass-card">
+            <h2>🌱 Crop Recommender</h2>
+            <p>Enter your soil and weather data to get a crop and irrigation recommendation.</p>
+            
+            <form id="recommendForm" class="recommender-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="recN">Nitrogen (N)</label>
+                        <input type="number" id="recN" name="N" placeholder="e.g., 90" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recP">Phosphorus (P)</label>
+                        <input type="number" id="recP" name="P" placeholder="e.g., 42" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recK">Potassium (K)</label>
+                        <input type="number" id="recK" name="K" placeholder="e.g., 43" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recTemp">Temperature (°C)</label>
+                        <input type="number" step="0.1" id="recTemp" name="temperature" placeholder="e.g., 20.8" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recHumidity">Humidity (%)</label>
+                        <input type="number" step="0.1" id="recHumidity" name="humidity" placeholder="e.g., 82.0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recPh">Soil pH</label>
+                        <input type="number" step="0.1" id="recPh" name="ph" placeholder="e.g., 6.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recRainfall">Rainfall (mm)</label>
+                        <input type="number" step="0.1" id="recRainfall" name="rainfall" placeholder="e.g., 202.9" required>
+                    </div>
+                </div>
+                <button type="submit" class="action-button" id="recommendButton">Get Recommendation</button>
+            </form>
+        </section>
+
+        <div class="results-area" id="resultsArea"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SmartAgri AI</h4>
+                <p>Empowering farmers with AI-driven insights</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SmartAgri AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="/static/js/firebase_config.js"></script>
+
+    <script>
+        // User menu toggle
+        const userMenuButton = document.getElementById('userMenuButton');
+        const userDropdown = document.getElementById('userDropdown');
+
+        userMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!userMenuButton.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('show');
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                if (window.firebaseAuth) {
+                    window.firebaseAuth.signOut();
+                } else {
+                    localStorage.removeItem('smartagri_user');
+                    sessionStorage.removeItem('smartagri_user');
+                    window.location.href = 'login.html';
+                }
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Crop Recommender Form Submission
+        document.getElementById('recommendForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const resultsArea = document.getElementById('resultsArea');
+            const button = document.getElementById('recommendButton');
+            
+            // Show loading state
+            resultsArea.innerHTML = '<div class="glass-card"><p style="text-align: center;">Loading recommendations...</p></div>';
+            button.disabled = true;
+            button.textContent = 'Analyzing...';
+
+            // Collect data into a JSON object
+            const formData = new FormData(this);
+            const data = {
+                N: parseFloat(formData.get('N')),
+                P: parseFloat(formData.get('P')),
+                K: parseFloat(formData.get('K')),
+                temperature: parseFloat(formData.get('temperature')),
+                humidity: parseFloat(formData.get('humidity')),
+                ph: parseFloat(formData.get('ph')),
+                rainfall: parseFloat(formData.get('rainfall'))
+            };
+
+            try {
+                // Call the API endpoint in server.py
+                // Use the Flask server port (5000) instead of Live Server port
+                const response = await fetch('http://127.0.0.1:5000/api/recommend_crop', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.error || 'Server error');
+                }
+
+                const resultData = await response.json();
+                displayResults(resultData);
+
+            } catch (error) {
+                resultsArea.innerHTML = `
+                    <div class="error-message">
+                        <strong>Error:</strong> ${error.message}
+                    </div>`;
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Get Recommendation';
+            }
+        });
+
+        function displayResults(data) {
+            const resultsArea = document.getElementById('resultsArea');
+            let irrigationHTML = '';
+            let cropsHTML = '';
+
+            // Build Irrigation Card
+            if (data.irrigation) {
+                const irrig = data.irrigation;
+                irrigationHTML = `
+                <section class="results-card glass-card irrigation-card">
+                    <h3>💧 Irrigation Advisor</h3>
+                    <p class="irrigation-action">${irrig.action}</p>
+                    <p class="irrigation-priority">
+                        Watering Priority: <span>${irrig.priority} / 1.0</span>
+                    </p>
+                    <p class="irrigation-explanation">
+                        <strong>Reason:</strong> ${irrig.explanation}
+                    </p>
+                </section>`;
+            }
+
+            // Build Crop Cards
+            if (data.recommendations && data.recommendations.length > 0) {
+                let cropListItems = '';
+                
+                data.recommendations.forEach((crop, index) => {
+                    const isTopPick = (index === 0);
+                    const topPickClass = isTopPick ? 'top-pick' : '';
+                    const topPickBadge = isTopPick ? '<div class="top-pick-badge">⭐ Top Pick</div>' : '';
+
+                    cropListItems += `
+                    <li class="crop-item ${topPickClass}">
+                        ${topPickBadge}
+                        <div class="crop-details">
+                            <h4 class="crop-name">${crop.crop}</h4>
+                            <p class="crop-confidence">
+                                <strong>${crop.confidence}%</strong> confidence
+                            </p>
+                        </div>
+                        <div class="crop-fertilizer">
+                            <strong>Fertilizer:</strong><br>
+                            ${crop.fertilizer.replace(/\n/g, '<br>')}
+                        </div>
+                    </li>`;
+                });
+
+                cropsHTML = `
+                <section class="results-card glass-card">
+                    <h3>🌾 Top Crop Recommendations</h3>
+                    <ul class="crop-list">
+                        ${cropListItems}
+                    </ul>
+                </section>`;
+            }
+
+            resultsArea.innerHTML = irrigationHTML + cropsHTML;
+        }
+    </script>
+</body>
+</html>

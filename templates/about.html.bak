@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SmartAgri AI</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🌾</span>
+                <span>SmartAgri AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="chat.html" class="nav-link">Chat</a></li>
+                <li><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li><a href="market.html" class="nav-link">Market</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Language and speaker toolbar -->
+            <div class="toolbar">
+                <div class="language-selector">
+                    <select id="chatLang" class="language-dropdown" aria-label="Chat language">
+                        <option value="en">🌍 English</option>
+                        <option value="hi">🌍 हिन्दी</option>
+                        <option value="bn">🌍 বাংলা</option>
+                    </select>
+                </div>
+                <button id="speakerToggle" class="speaker-button" title="Toggle Text-to-Speech" aria-label="Speaker toggle">
+                    🔊
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="about-hero">
+                <h1>About SmartAgri AI</h1>
+                <p>Transforming agriculture through artificial intelligence and innovation</p>
+            </div>
+
+            <!-- Our Story Section -->
+            <section class="about-section">
+                <h2 class="section-title">Our Story</h2>
+                <div class="about-mission">
+                    <div class="section-content">
+                        <div class="section-text">
+                            <h2>From Fields to Innovation</h2>
+                            <p>SmartAgri AI was born from a simple observation: farmers needed better tools to make informed decisions. Founded in 2020 by a team of agricultural engineers and AI experts, we set out to bridge the gap between traditional farming wisdom and cutting-edge technology.</p>
+                            <p>Today, we serve over 50,000 farmers across India, helping them increase yields, reduce costs, and practice sustainable agriculture. Our AI-powered platform analyzes millions of data points daily to provide actionable insights that make a real difference in farmers' lives.</p>
+                            <p weight = '7'>Tech Stack:- 
+                                    1. Python FullStack. </p><p>
+                                    2. Firebase & FirestoreDatabase.
+                                    </p>
+                        </div>
+                        <div class="section-image">
+                            <div style="width: 100%; height: 350px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 8rem; border: 2px solid var(--accent);">
+                                🌱
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission & Vision Section -->
+            <section class="about-section">
+                <h2 class="section-title">Our Mission & Vision</h2>
+                <div class="about-vision">
+                    <div class="section-content">
+                        <div class="section-image">
+                            <div style="width: 100%; height: 350px; background: linear-gradient(135deg, var(--accent-3), var(--accent)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 8rem; border: 2px solid var(--accent);">
+                                🎯
+                            </div>
+                        </div>
+                        <div class="section-text">
+                            <h2>Our Commitment</h2>
+                            <ul class="vision-list">
+                                <li><strong>Mission:</strong> To democratize access to advanced agricultural technology, empowering farmers of all sizes to make data-driven decisions that increase productivity, profitability, and sustainability.</li>
+                                <li><strong>Vision:</strong> A future where every farmer has access to world-class AI tools, creating a more resilient, efficient, and sustainable global food system for generations to come.</li>
+                                <li><strong>Values:</strong> Innovation with integrity, farmer-first approach, sustainable practices, continuous learning, and building technology that's accessible to all.</li>
+                                <li><strong>Sustainability:</strong> Promoting eco-friendly farming practices that protect our planet while ensuring food security.</li>
+                                <li><strong>Inclusivity:</strong> Making advanced technology available regardless of farm size, location, or resources.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Features Section -->
+            <section class="about-section">
+                <h2 class="section-title">What We Offer</h2>
+                <div class="features-grid-about">
+                    <div class="feature-card-about">
+                        <div class="feature-icon-large">🤖</div>
+                        <h3>AI Chat Assistant</h3>
+                        <p>24/7 access to expert farming advice powered by advanced AI trained on thousands of agricultural best practices and scientific research.</p>
+                    </div>
+                    <div class="feature-card-about">
+                        <div class="feature-icon-large">📸</div>
+                        <h3>Smart Crop Analysis</h3>
+                        <p>Upload crop images for instant health assessments, disease detection, and personalized treatment recommendations using computer vision.</p>
+                    </div>
+                    <div class="feature-card-about">
+                        <div class="feature-icon-large">📊</div>
+                        <h3>Market Intelligence</h3>
+                        <p>Real-time market prices, demand forecasts, and weather predictions to help you plan planting and selling strategies effectively.</p>
+                    </div>
+                    <div class="feature-card-about">
+                        <div class="feature-icon-large">📈</div>
+                        <h3>Yield Predictions</h3>
+                        <p>Advanced analytics and predictive models that forecast your harvest outcomes based on current conditions and historical data.</p>
+                    </div>
+                    <div class="feature-card-about">
+                        <div class="feature-icon-large">💧</div>
+                        <h3>Resource Optimization</h3>
+                        <p>Smart recommendations for water usage, fertilizer application, and pest management to maximize efficiency and reduce waste.</p>
+                    </div>
+                    <div class="feature-card-about">
+                        <div class="feature-icon-large">🌍</div>
+                        <h3>Multi-Language Support</h3>
+                        <p>Available in English, Hindi, Bengali, and more regional languages to serve farmers across India in their preferred language.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journey Timeline -->
+            <section class="about-section">
+                <h2 class="section-title">Our Journey</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <span class="activity-time">2020</span>
+                        <span class="activity-text"><strong>Foundation:</strong> SmartAgri AI was founded with a vision to revolutionize farming through artificial intelligence</span>
+                        <span class="activity-status success">🌱</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2021</span>
+                        <span class="activity-text"><strong>First 1,000 Users:</strong> Launched beta version and onboarded our first 1,000 farmers, receiving invaluable feedback</span>
+                        <span class="activity-status info">👥</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2022</span>
+                        <span class="activity-text"><strong>AI Breakthrough:</strong> Achieved 95% accuracy in crop disease detection, setting new industry standards</span>
+                        <span class="activity-status success">🎯</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2023</span>
+                        <span class="activity-text"><strong>National Expansion:</strong> Expanded to 15 states across India, serving diverse crops and farming practices</span>
+                        <span class="activity-status info">🗺️</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2024</span>
+                        <span class="activity-text"><strong>50,000+ Farmers:</strong> Crossed 50,000 active users milestone and launched multilingual support</span>
+                        <span class="activity-status success">🚀</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2025</span>
+                        <span class="activity-text"><strong>Innovation Continues:</strong> Introducing advanced predictive analytics and expanding to international markets</span>
+                        <span class="activity-status warning">⭐</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="about-section">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="team-intro">Our diverse team of experts combines agricultural knowledge, AI expertise, and a passion for empowering farmers</p>
+                <div class="team-grid-about">
+                    <div class="team-member-about">
+                        <div class="member-image">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--accent-2), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto;">
+                            👩‍💻
+                            </div>
+                        </div>
+                        <h3>Ananya Brahma</h3>
+                        <p class="member-role">CEO & Co-Founder</p>
+                        <p class="member-bio">The co-lead in this Project.</p>
+                    </div>
+                    <div class="team-member-about">
+                        <div class="member-image">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--accent-3), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto;">
+                            👨‍💼
+                            </div>
+                        </div>
+                        <h3>Obaid</h3>
+                        <p class="member-role">Chief AI Officer</p>
+                        <p class="member-bio">The co-lead as well.</p>
+                    </div>
+                    <div class="team-member-about">
+                        <div class="member-image">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--accent), var(--accent-3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto;">
+                                👩‍🔬
+                            </div>
+                        </div>
+                        <h3>Sneha Pandey</h3>
+                        <p class="member-role">Head of Agronomy</p>
+                        <p class="member-bio">Experienced agronomist with expertise in crop science, soil health, and sustainable farming practices across multiple regions.</p>
+                    </div>
+                    <div class="team-member-about">
+                        <div class="member-image">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--accent-2), var(--accent-3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto;">
+                                👨‍🌾
+                            </div>
+                        </div>
+                        <h3>Aman Kumar</h3>
+                        <p class="member-role">Product Manager</p>
+                        <p class="member-bio">Passionate about user experience and making AI accessible. Works closely with farmers to understand their needs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Statistics -->
+            <section class="about-section">
+                <h2 class="section-title">Our Impact</h2>
+                <div class="about-impact">
+                    <div class="stats-grid-about">
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">👨‍🌾</div>
+                            <div class="stat-number">50,000+</div>
+                            <div class="stat-label">Active Farmers</div>
+                            <div class="stat-desc">Growing community nationwide</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">🌾</div>
+                            <div class="stat-number">1M+</div>
+                            <div class="stat-label">Crops Analyzed</div>
+                            <div class="stat-desc">AI-powered assessments</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">📈</div>
+                            <div class="stat-number">25%</div>
+                            <div class="stat-label">Avg. Yield Increase</div>
+                            <div class="stat-desc">Proven results</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">💰</div>
+                            <div class="stat-number">₹500Cr+</div>
+                            <div class="stat-label">Economic Impact</div>
+                            <div class="stat-desc">Value created for farmers</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">🗺️</div>
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">States Covered</div>
+                            <div class="stat-desc">Pan-India presence</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">🎯</div>
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Accuracy Rate</div>
+                            <div class="stat-desc">Disease detection precision</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">🕐</div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support Available</div>
+                            <div class="stat-desc">Always here to help</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="stat-icon-large">🌍</div>
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Languages Supported</div>
+                            <div class="stat-desc">Breaking language barriers</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="about-section">
+                <div class="about-cta">
+                    <div class="cta-content">
+                        <h2>Ready to Transform Your Farm?</h2>
+                        <p>Join thousands of farmers who are already using SmartAgri AI to increase yields, reduce costs, and practice sustainable farming.</p>
+                        <div class="cta-buttons">
+                            <a href="chat.html" class="btn btn-primary">Start Chatting with AI</a>
+                            <a href="analyzer.html" class="btn btn-secondary">Analyze Your Crops</a>
+                            <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SmartAgri AI</h4>
+                <p>Empowering farmers with AI-driven insights for a sustainable agricultural future.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="chat.html">AI Chat</a></li>
+                    <li><a href="analyzer.html">Crop Analyzer</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SmartAgri AI. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

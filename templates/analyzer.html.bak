@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Analyzer - SmartAgri AI</title>
+  <link rel="stylesheet" href="/static/css/analyzer.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <span class="logo-icon">🌾</span>
+        <span>SmartAgri AI</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Dashboard</a></li>
+        <li><a href="chat.html" class="nav-link">Chat</a></li>
+        <li><a href="analyzer.html" class="nav-link active">Analyzer</a></li>
+        <li><a href="market.html" class="nav-link">Market</a></li>
+        <li><a href="profile.html" class="nav-link">Profile</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Analyzer Section -->
+  <main class="main-content">
+    <div class="analyzer-wrapper">
+      <h1>🌿 SmartAgri Crop Analyzer</h1>
+      <p>Upload a clear image of your plant or leaf to identify species and detect diseases.</p>
+
+      <div class="upload-box" id="uploadBox">
+        <input type="file" id="plantImage" accept="image/*" class="file-input" />
+        <div class="upload-content">
+          <span class="upload-icon">📷</span>
+          <h3>Drop or Browse Image</h3>
+          <p class="hint">Supported formats: JPG, PNG (max 5MB)</p>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="analyzeBtn" class="action-btn">Analyze Image</button>
+        <button id="clearBtn" class="action-btn secondary">Clear</button>
+      </div>
+
+      <div id="previewSection" class="preview-section hidden">
+        <h3>Image Preview</h3>
+        <div class="preview-container">
+          <img id="previewImage" src="" alt="Crop preview" class="preview-img" />
+        </div>
+        <div class="preview-info">
+          <p id="fileName">📄 No file selected</p>
+          <p id="fileSize">💾 0 KB</p>
+        </div>
+      </div>
+
+      <div id="resultsSection" class="results-section hidden">
+        <h2>🧠 Analysis Results</h2>
+        
+        <div class="health-score">
+          <h3>Health Status</h3>
+          <div class="score-bar">
+            <div id="healthScore" class="score-fill" style="width: 0%"></div>
+          </div>
+          <p id="scoreText" class="score-text"></p>
+        </div>
+
+        <div id="analyzerResult" class="results-box"></div>
+
+        <div class="recommendations-box">
+          <h3>💡 Care Recommendations</h3>
+          <ul id="recommendationsList" class="recommendations-list"></ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>SmartAgri AI</h4>
+        <p>Empowering farmers with AI-driven insights</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SmartAgri AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/analyzer.js"></script>
+</body>
+</html>

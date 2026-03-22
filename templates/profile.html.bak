@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAgri AI - Profile & Settings</title>
+    
+    <link rel="stylesheet" href="/static/css/styles.css">
+    
+    <style>
+        /* User Menu Styles - FIXED z-index */
+        .toolbar { position: relative; z-index: 1000; }
+        .user-menu { position: relative; z-index: 1001; }
+        .user-button {
+            background: var(--glass-2);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+        .user-button:hover {
+            border-color: var(--accent);
+            background: rgba(45, 159, 96, 0.1);
+        }
+        .user-avatar { font-size: 1.2rem; }
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            min-width: 200px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+        .user-dropdown.show { display: flex; animation: dropdownSlide 0.3s ease; }
+        @keyframes dropdownSlide {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .dropdown-header .user-name {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .dropdown-header .user-email {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        .dropdown-item {
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        .dropdown-item:hover {
+            background: rgba(45, 159, 96, 0.1);
+            color: var(--accent);
+        }
+        .dropdown-item.logout {
+            border-top: 1px solid var(--glass-border);
+            color: #ff6b6b;
+        }
+        .dropdown-item.logout:hover {
+            background: rgba(244, 67, 54, 0.1);
+            color: #ff6b6b;
+        }
+        .dropdown-icon { font-size: 1.1rem; }
+
+        /* Profile Page Styles */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .profile-card {
+            background: var(--glass-2);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            border-color: rgba(45, 159, 96, 0.4);
+            box-shadow: 0 8px 24px rgba(45, 159, 96, 0.1);
+        }
+
+        .profile-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(45, 159, 96, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group input:disabled {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--muted);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Toggle Switch */
+        .switch-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--muted);
+            padding: 0.5rem 0;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+        .switch input { display: none; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.3);
+            transition: .4s;
+            border-radius: 34px;
+            border: 1px solid var(--glass-border);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+        
+        .action-button {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(45, 159, 96, 0.3);
+        }
+        .action-button:hover {
+            background: #2faf64;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 159, 96, 0.4);
+        }
+        .action-button:disabled {
+            background: var(--muted);
+            cursor: not-allowed;
+            opacity: 0.5;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        /* Loading state for form */
+        .form-loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 600;
+            z-index: 10000;
+            display: none;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+        }
+        .toast.show {
+            display: block;
+        }
+        .toast.success {
+            background: linear-gradient(135deg, #2d9f60 0%, #1e7a47 100%);
+        }
+        .toast.error {
+            background: linear-gradient(135deg, #ff6b6b 0%, #d63031 100%);
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Profile stats summary */
+        .profile-summary {
+            background: linear-gradient(135deg, rgba(45, 159, 96, 0.1) 0%, rgba(45, 159, 96, 0.05) 100%);
+            border: 2px solid rgba(45, 159, 96, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .profile-info h2 {
+            margin: 0 0 0.5rem 0;
+            color: var(--accent);
+        }
+
+        .profile-info p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-summary {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .toast {
+                right: 1rem;
+                left: 1rem;
+                bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🌾</span>
+                <span>SmartAgri AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="chat.html" class="nav-link">Chat</a></li>
+                <li><a href="analyzer.html" class="nav-link">Analyzer</a></li>
+                <li><a href="market.html" class="nav-link">Market</a></li>
+                <li><a href="profile.html" class="nav-link active">Profile</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="toolbar">
+                <div class="language-selector">
+                    <select id="chatLang" class="language-dropdown" aria-label="Chat language">
+                        <option value="en">🌐 English</option>
+                        <option value="hi">🌐 हिन्दी</option>
+                        <option value="bn">🌐 বাংলা</option>
+                    </select>
+                </div>
+                <button id="speakerToggle" class="speaker-button" title="Toggle Text-to-Speech" aria-label="Speaker toggle">
+                    🔊
+                </button>
+                <div class="user-menu">
+                    <button class="user-button" id="userMenuButton">
+                        <span class="user-avatar">👤</span>
+                        <span id="userNameDisplay">User</span>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-header">
+                            <div class="user-name" id="dropdownUserName">User Name</div>
+                            <div class="user-email" id="dropdownUserEmail">user@email.com</div>
+                        </div>
+                        <a href="profile.html" class="dropdown-item">
+                            <span class="dropdown-icon">⚙️</span>
+                            <span>Settings</span>
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <span class="dropdown-icon">👤</span>
+                            <span>Profile</span>
+                        </a>
+                        <button class="dropdown-item logout" id="logoutButton">
+                            <span class="dropdown-icon">🚪</span>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <header class="page-header">
+                <h1>Profile & Settings</h1>
+                <p>Manage your account, farm details, and preferences.</p>
+            </header>
+
+            <!-- Profile Summary Card -->
+            <div class="profile-summary">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-info">
+                    <h2 id="summaryName">Loading...</h2>
+                    <p id="summaryEmail">Loading...</p>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+                
+                <!-- Personal Information -->
+                <section class="profile-card">
+                    <h3>👤 Personal Information</h3>
+                    <form id="profileForm">
+                        <div class="form-group">
+                            <label for="profileName">Full Name</label>
+                            <input type="text" id="profileName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profileEmail">Email Address</label>
+                            <input type="email" id="profileEmail" placeholder="Your email address" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePhone">Phone Number</label>
+                            <input type="tel" id="profilePhone" placeholder="e.g., +91 98765 43210">
+                        </div>
+                        <button type="submit" class="action-button" id="profileSaveButton">
+                            💾 Save Changes
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Farm Details -->
+                <section class="profile-card">
+                    <h3>🌾 Farm Details</h3>
+                    <form id="farmForm">
+                        <div class="form-group">
+                            <label for="farmName">Farm Name</label>
+                            <input type="text" id="farmName" placeholder="e.g., Green Valley Farms">
+                        </div>
+                        <div class="form-group">
+                            <label for="farmLocation">Location (City/District)</label>
+                            <input type="text" id="farmLocation" placeholder="e.g., Springfield, Bihar">
+                        </div>
+                        <div class="form-group">
+                            <label for="farmArea">Farm Area (acres)</label>
+                            <input type="number" id="farmArea" placeholder="e.g., 50" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="farmCrops">Main Crops</label>
+                            <textarea id="farmCrops" rows="3" placeholder="e.g., Rice, Wheat, Sugarcane"></textarea>
+                        </div>
+                        <button type="submit" class="action-button" id="farmSaveButton">
+                            🌱 Save Farm Info
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Notification Settings -->
+                <section class="profile-card">
+                    <h3>🔔 Notification Settings</h3>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label class="switch-label">
+                                <span>🌤️ Weather Alerts</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="settingWeather">
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switch-label">
+                                <span>📈 Market Price Alerts</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="settingMarket">
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switch-label">
+                                <span>🐛 Pest Detection Alerts</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="settingPest">
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="switch-label">
+                                <span>💧 Irrigation Reminders</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="settingIrrigation">
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <button type="submit" class="action-button" id="settingsSaveButton">
+                            ⚙️ Save Settings
+                        </button>
+                    </form>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SmartAgri AI</h4>
+                <p>Empowering farmers with AI-driven insights</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SmartAgri AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script src="/static/js/firebase_config.js"></script>
+
+    <script>
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Load profile data from Firebase/sessionStorage
+        async function loadProfileData() {
+            try {
+                // Get user from sessionStorage (set by firebase_config.js)
+                const userStr = sessionStorage.getItem('smartagri_user');
+                
+                if (!userStr) {
+                    console.warn('No user data found in session');
+                    showToast('Please log in to view your profile', 'error');
+                    setTimeout(() => window.location.href = 'login.html', 2000);
+                    return;
+                }
+
+                const user = JSON.parse(userStr);
+                console.log('Loaded user data:', user);
+
+                // Populate summary
+                document.getElementById('summaryName').textContent = user.name || 'User';
+                document.getElementById('summaryEmail').textContent = user.email || '';
+
+                // Update dropdown
+                document.getElementById('userNameDisplay').textContent = user.name || 'User';
+                document.getElementById('dropdownUserName').textContent = user.name || 'User';
+                document.getElementById('dropdownUserEmail').textContent = user.email || '';
+
+                // Populate personal info form
+                document.getElementById('profileName').value = user.name || '';
+                document.getElementById('profileEmail').value = user.email || '';
+                document.getElementById('profilePhone').value = user.phone || '';
+
+                // Populate farm info form
+                if (user.farmInfo) {
+                    document.getElementById('farmName').value = user.farmInfo.name || '';
+                    document.getElementById('farmLocation').value = user.farmInfo.location || '';
+                    document.getElementById('farmArea').value = user.farmInfo.area || '';
+                    document.getElementById('farmCrops').value = user.farmInfo.crops || '';
+                }
+
+                // Populate settings form
+                if (user.settings) {
+                    document.getElementById('settingWeather').checked = user.settings.weatherAlerts || false;
+                    document.getElementById('settingMarket').checked = user.settings.marketAlerts || false;
+                    document.getElementById('settingPest').checked = user.settings.pestAlerts || false;
+                    document.getElementById('settingIrrigation').checked = user.settings.irrigationReminders || false;
+                }
+
+            } catch (error) {
+                console.error('Error loading profile data:', error);
+                showToast('Error loading profile data', 'error');
+            }
+        }
+
+        // Handle Profile Form Save
+        async function handleProfileSave(e) {
+            e.preventDefault();
+            const form = e.target;
+            const button = document.getElementById('profileSaveButton');
+            
+            form.classList.add('form-loading');
+            button.disabled = true;
+            button.textContent = '💾 Saving...';
+
+            try {
+                const updates = {
+                    name: document.getElementById('profileName').value,
+                    phone: document.getElementById('profilePhone').value
+                };
+
+                // Use Firebase auth helper from firebase_config.js
+                if (window.firebaseAuth && window.firebaseAuth.updateUserProfile) {
+                    const result = await window.firebaseAuth.updateUserProfile(updates);
+                    
+                    if (result.success) {
+                        showToast('✅ Profile updated successfully!', 'success');
+                        // Reload data to show updates
+                        await loadProfileData();
+                    } else {
+                        throw new Error(result.error || 'Failed to update profile');
+                    }
+                } else {
+                    // Fallback: update sessionStorage directly
+                    const userStr = sessionStorage.getItem('smartagri_user');
+                    if (userStr) {
+                        const user = JSON.parse(userStr);
+                        Object.assign(user, updates);
+                        sessionStorage.setItem('smartagri_user', JSON.stringify(user));
+                        showToast('✅ Profile updated successfully!', 'success');
+                        await loadProfileData();
+                    }
+                }
+            } catch (error) {
+                console.error('Error saving profile:', error);
+                showToast(`❌ Error: ${error.message}`, 'error');
+            } finally {
+                form.classList.remove('form-loading');
+                button.disabled = false;
+                button.textContent = '💾 Save Changes';
+            }
+        }
+
+        // Handle Farm Form Save
+        async function handleFarmSave(e) {
+            e.preventDefault();
+            const form = e.target;
+            const button = document.getElementById('farmSaveButton');
+            
+            form.classList.add('form-loading');
+            button.disabled = true;
+            button.textContent = '🌱 Saving...';
+
+            try {
+                const farmInfo = {
+                    name: document.getElementById('farmName').value,
+                    location: document.getElementById('farmLocation').value,
+                    area: document.getElementById('farmArea').value,
+                    crops: document.getElementById('farmCrops').value
+                };
+
+                if (window.firebaseAuth && window.firebaseAuth.updateFarmInfo) {
+                    const result = await window.firebaseAuth.updateFarmInfo(farmInfo);
+                    
+                    if (result.success) {
+                        showToast('✅ Farm info updated successfully!', 'success');
+                        await loadProfileData();
+                    } else {
+                        throw new Error(result.error || 'Failed to update farm info');
+                    }
+                } else {
+                    // Fallback
+                    const userStr = sessionStorage.getItem('smartagri_user');
+                    if (userStr) {
+                        const user = JSON.parse(userStr);
+                        user.farmInfo = farmInfo;
+                        sessionStorage.setItem('smartagri_user', JSON.stringify(user));
+                        showToast('✅ Farm info updated successfully!', 'success');
+                        await loadProfileData();
+                    }
+                }
+            } catch (error) {
+                console.error('Error saving farm info:', error);
+                showToast(`❌ Error: ${error.message}`, 'error');
+            } finally {
+                form.classList.remove('form-loading');
+                button.disabled = false;
+                button.textContent = '🌱 Save Farm Info';
+            }
+        }
+
+        // Handle Settings Form Save
+        async function handleSettingsSave(e) {
+            e.preventDefault();
+            const form = e.target;
+            const button = document.getElementById('settingsSaveButton');
+            
+            form.classList.add('form-loading');
+            button.disabled = true;
+            button.textContent = '⚙️ Saving...';
+
+            try {
+                const settings = {
+                    weatherAlerts: document.getElementById('settingWeather').checked,
+                    marketAlerts: document.getElementById('settingMarket').checked,
+                    pestAlerts: document.getElementById('settingPest').checked,
+                    irrigationReminders: document.getElementById('settingIrrigation').checked
+                };
+
+                if (window.firebaseAuth && window.firebaseAuth.updateSettings) {
+                    const result = await window.firebaseAuth.updateSettings(settings);
+                    
+                    if (result.success) {
+                        showToast('✅ Settings saved successfully!', 'success');
+                        await loadProfileData();
+                    } else {
+                        throw new Error(result.error || 'Failed to update settings');
+                    }
+                } else {
+                    // Fallback
+                    const userStr = sessionStorage.getItem('smartagri_user');
+                    if (userStr) {
+                        const user = JSON.parse(userStr);
+                        user.settings = settings;
+                        sessionStorage.setItem('smartagri_user', JSON.stringify(user));
+                        showToast('✅ Settings saved successfully!', 'success');
+                        await loadProfileData();
+                    }
+                }
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                showToast(`❌ Error: ${error.message}`, 'error');
+            } finally {
+                form.classList.remove('form-loading');
+                button.disabled = false;
+                button.textContent = '⚙️ Save Settings';
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async () => {
+            // User menu toggle
+            const userMenuButton = document.getElementById('userMenuButton');
+            const userDropdown = document.getElementById('userDropdown');
+
+            if (userMenuButton) {
+                userMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    userDropdown.classList.toggle('show');
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (userDropdown && !userMenuButton.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.remove('show');
+                }
+            });
+
+            // Logout button
+            const logoutButton = document.getElementById('logoutButton');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    if (confirm('Are you sure you want to logout?')) {
+                        if (window.firebaseAuth && window.firebaseAuth.signOut) {
+                            window.firebaseAuth.signOut();
+                        } else {
+                            sessionStorage.removeItem('smartagri_user');
+                            localStorage.removeItem('smartagri_user');
+                            window.location.href = 'login.html';
+                        }
+                    }
+                });
+            }
+
+            // Hamburger menu
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Load profile data
+            await loadProfileData();
+
+            // Form handlers
+            document.getElementById('profileForm').addEventListener('submit', handleProfileSave);
+            document.getElementById('farmForm').addEventListener('submit', handleFarmSave);
+            document.getElementById('settingsForm').addEventListener('submit', handleSettingsSave);
+        });
+    </script>
+</body>
+</html>
