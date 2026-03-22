@@ -1,0 +1,24 @@
+{
+  "name": "Obaid",
+  "location": "Asansol",
+  "state": "West Bengal",
+  "farm_size_acres": null,
+  "soil_type": "slay",
+  "irrigation_type": "drip",
+  "current_crops": [
+    "rice"
+  ],
+  "past_crops": [],
+  "livestock": [
+    "cattle"
+  ],
+  "challenges": [
+    "pest"
+  ],
+  "languages": [
+    "en",
+    "bn"
+  ],
+  "created_at": "2026-03-22T09:13:29.472888",
+  "updated_at": "2026-03-22T09:13:29.472888"
+}

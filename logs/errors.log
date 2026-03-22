@@ -401,3 +401,8 @@ Traceback (most recent call last):
   File "D:\code(4)\server.py", line 495, in text_to_speech
     log_external_api_call("elevenlabs", "/text-to-speech", 200, 0)
 TypeError: log_external_api_call() takes 1 positional argument but 4 were given
+2026-03-22 14:53:23 | smartagri.errors | ERROR | log_error_with_context:265 | Error: log_external_api_call() takes 1 positional argument but 4 were given | Context: {"endpoint": "/api/stt"}
+Traceback (most recent call last):
+  File "D:\code(4)\server.py", line 442, in speech_to_text
+    log_external_api_call("groq", "/audio/transcriptions", 200, 0)
+TypeError: log_external_api_call() takes 1 positional argument but 4 were given

@@ -37,3 +37,5 @@
 {"timestamp": "2026-03-16T01:36:28.693619", "type": "plant_analysis", "input": {"filename": "testleaf.png"}, "output": {"plant": "potato", "healthy": true, "confidence": 0.99}, "metadata": {"api": "kindwise_crop_health"}}
 {"timestamp": "2026-03-16T01:42:00.717006", "type": "plant_analysis", "input": {"filename": "testleaf.png"}, "output": {"plant": "potato", "healthy": false, "confidence": 0.99}, "metadata": {"api": "kindwise_crop_health"}}
 {"timestamp": "2026-03-16T11:19:00.265649", "type": "plant_analysis", "input": {"filename": "testleaf.png"}, "output": {"plant": "potato", "healthy": false, "confidence": 0.99}, "metadata": {"api": "kindwise_crop_health"}}
+{"timestamp": "2026-03-22T14:49:59.077154", "type": "plant_analysis", "input": {"filename": "testleaf.png"}, "output": {"plant": "potato", "healthy": false, "confidence": 0.99}, "metadata": {"api": "kindwise_crop_health"}}
+{"timestamp": "2026-03-22T14:51:01.543766", "type": "plant_analysis", "input": {"filename": "cancker.jpg"}, "output": {"plant": "citrus", "healthy": false, "confidence": 0.5669}, "metadata": {"api": "kindwise_crop_health"}}

@@ -3370,3 +3370,85 @@ requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError('The w
 2026-03-16 11:19:00 | smartagri_server.app | INFO | analyze_plant:722 | Plant identified: potato (confidence: 0.99), Healthy: False
 2026-03-16 11:19:00 | smartagri_server.app | INFO | analyze_plant:755 | Response health: is_healthy=False, probability=0.42, diseases=3
 2026-03-16 11:19:00 | smartagri.app | INFO | wrapper:152 | [20260316111854111277] /api/analyze_plant - Completed in 6224.79ms
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:76 | ============================================================
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:77 | SmartAgri Server Starting...
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:78 | GROQ_API_KEY configured: True
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:79 | WEATHER_API_KEY configured: True
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:80 | ELEVEN_API_KEY configured: True
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:81 | ============================================================
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:975 | 
+============================================================
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:977 | ============================================================
+2026-03-22 14:33:29 | smartagri_server.app | INFO | <module>:986 | ============================================================
+
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:76 | ============================================================
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:77 | SmartAgri Server Starting...
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:78 | GROQ_API_KEY configured: True
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:79 | WEATHER_API_KEY configured: True
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:80 | ELEVEN_API_KEY configured: True
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:81 | ============================================================
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:975 | 
+============================================================
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:977 | ============================================================
+2026-03-22 14:33:32 | smartagri_server.app | INFO | <module>:986 | ============================================================
+
+2026-03-22 14:35:34 | smartagri.app | INFO | wrapper:135 | [20260322143534025941] /api/chat - Request received
+2026-03-22 14:35:34 | smartagri_server.app | INFO | chat:355 | Chat request: hi... (lang: en)
+2026-03-22 14:35:34 | smartagri.app | INFO | wrapper:152 | [20260322143534025941] /api/chat - Completed in 0.54ms
+2026-03-22 14:35:42 | smartagri.app | INFO | wrapper:135 | [20260322143542115042] /api/chat - Request received
+2026-03-22 14:35:42 | smartagri_server.app | INFO | chat:355 | Chat request: what is your name... (lang: en)
+2026-03-22 14:35:42 | smartagri.app | INFO | wrapper:152 | [20260322143542115042] /api/chat - Completed in 0.0ms
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:77 | ============================================================
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:78 | SmartAgri Server Starting...
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:79 | GROQ_API_KEY configured: True
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:80 | WEATHER_API_KEY configured: True
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:81 | ELEVEN_API_KEY configured: True
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:82 | ============================================================
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:1019 | 
+============================================================
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:1021 | ============================================================
+2026-03-22 14:44:11 | smartagri_server.app | INFO | <module>:1030 | ============================================================
+
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:77 | ============================================================
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:78 | SmartAgri Server Starting...
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:79 | GROQ_API_KEY configured: True
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:80 | WEATHER_API_KEY configured: True
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:81 | ELEVEN_API_KEY configured: True
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:82 | ============================================================
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:1019 | 
+============================================================
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:1021 | ============================================================
+2026-03-22 14:44:14 | smartagri_server.app | INFO | <module>:1030 | ============================================================
+
+2026-03-22 14:44:50 | smartagri.app | INFO | wrapper:135 | [20260322144450172940] /api/chat - Request received
+2026-03-22 14:44:50 | smartagri_server.app | INFO | chat:356 | Chat request: hi... (lang: en)
+2026-03-22 14:44:50 | smartagri_server.app | INFO | chat:371 | Profile context injected for: Obaid
+2026-03-22 14:44:50 | smartagri.app | INFO | wrapper:152 | [20260322144450172940] /api/chat - Completed in 3.5ms
+2026-03-22 14:49:53 | smartagri.app | INFO | wrapper:135 | [20260322144953419027] /api/analyze_plant - Request received
+2026-03-22 14:49:53 | smartagri_server.app | INFO | analyze_plant:604 | Analyzing plant image: testleaf.png
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:622 | Kindwise API response status: 201
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:642 | Kindwise result keys: ['is_plant', 'disease', 'crop']
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:643 | Kindwise suggestions: []
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:644 | Kindwise API call successful
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:661 | Crop suggestions: 1, Disease data: True
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:734 | Plant identified: potato (confidence: 0.99), Healthy: False
+2026-03-22 14:49:59 | smartagri_server.app | INFO | analyze_plant:767 | Response health: is_healthy=False, probability=0.42, diseases=3
+2026-03-22 14:49:59 | smartagri.app | INFO | wrapper:152 | [20260322144953419027] /api/analyze_plant - Completed in 5664.35ms
+2026-03-22 14:50:58 | smartagri.app | INFO | wrapper:135 | [20260322145058285639] /api/analyze_plant - Request received
+2026-03-22 14:50:58 | smartagri_server.app | INFO | analyze_plant:604 | Analyzing plant image: cancker.jpg
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:622 | Kindwise API response status: 201
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:642 | Kindwise result keys: ['is_plant', 'disease', 'crop']
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:643 | Kindwise suggestions: []
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:644 | Kindwise API call successful
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:661 | Crop suggestions: 4, Disease data: True
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:734 | Plant identified: citrus (confidence: 0.57), Healthy: False
+2026-03-22 14:51:01 | smartagri_server.app | INFO | analyze_plant:767 | Response health: is_healthy=False, probability=0.05, diseases=3
+2026-03-22 14:51:01 | smartagri.app | INFO | wrapper:152 | [20260322145058285639] /api/analyze_plant - Completed in 3262.81ms
+2026-03-22 14:53:22 | smartagri.app | INFO | wrapper:135 | [20260322145322139699] /api/stt - Request received
+2026-03-22 14:53:22 | smartagri_server.app | INFO | speech_to_text:429 | Processing speech-to-text request
+2026-03-22 14:53:23 | smartagri_server.app | INFO | speech_to_text:440 | STT result:  Hi, am I talking to Ahsan?...
+2026-03-22 14:53:23 | smartagri.app | INFO | wrapper:152 | [20260322145322139699] /api/stt - Completed in 926.21ms
+2026-03-22 14:53:32 | smartagri.app | INFO | wrapper:135 | [20260322145332417712] /api/chat - Request received
+2026-03-22 14:53:32 | smartagri_server.app | INFO | chat:356 | Chat request: hi... (lang: en)
+2026-03-22 14:53:32 | smartagri_server.app | INFO | chat:371 | Profile context injected for: Obaid
+2026-03-22 14:53:32 | smartagri.app | INFO | wrapper:152 | [20260322145332417712] /api/chat - Completed in 5.15ms

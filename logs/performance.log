@@ -247,3 +247,10 @@
 {"request_id": "20260316111825972954", "timestamp": "2026-03-16T11:18:25.972954", "endpoint": "/api/chat", "execution_time_ms": 0.0, "status": "success"}
 {"request_id": "20260316111830204366", "timestamp": "2026-03-16T11:18:33.652702", "endpoint": "/api/tts", "execution_time_ms": 3448.34, "status": "success"}
 {"request_id": "20260316111854111277", "timestamp": "2026-03-16T11:19:00.336068", "endpoint": "/api/analyze_plant", "execution_time_ms": 6224.79, "status": "success"}
+{"request_id": "20260322143534025941", "timestamp": "2026-03-22T14:35:34.027429", "endpoint": "/api/chat", "execution_time_ms": 0.54, "status": "success"}
+{"request_id": "20260322143542115042", "timestamp": "2026-03-22T14:35:42.115042", "endpoint": "/api/chat", "execution_time_ms": 0.0, "status": "success"}
+{"request_id": "20260322144450172940", "timestamp": "2026-03-22T14:44:50.176438", "endpoint": "/api/chat", "execution_time_ms": 3.5, "status": "success"}
+{"request_id": "20260322144953419027", "timestamp": "2026-03-22T14:49:59.083376", "endpoint": "/api/analyze_plant", "execution_time_ms": 5664.35, "status": "success"}
+{"request_id": "20260322145058285639", "timestamp": "2026-03-22T14:51:01.548453", "endpoint": "/api/analyze_plant", "execution_time_ms": 3262.81, "status": "success"}
+{"request_id": "20260322145322139699", "timestamp": "2026-03-22T14:53:23.065905", "endpoint": "/api/stt", "execution_time_ms": 926.21, "status": "success"}
+{"request_id": "20260322145332417712", "timestamp": "2026-03-22T14:53:32.422865", "endpoint": "/api/chat", "execution_time_ms": 5.15, "status": "success"}

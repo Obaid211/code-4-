@@ -18,6 +18,7 @@ import json
 from datetime import datetime
 import pickle  # Added from new version
 import numpy as np
+from farmer_profile import load_profile, save_profile, build_profile_context, validate_profile
 
 # Import logging configuration (from old version)
 try:
@@ -360,6 +361,17 @@ def chat():
         Provide practical, actionable advice in a friendly and clear manner. Keep responses concise 
         but informative. If asked about specific crops, pests, or farming practices, provide 
         region-appropriate advice for Indian agriculture when relevant."""
+
+        # ── Inject farmer profile context ──────────────────────────
+        try:
+            profile = load_profile()
+            profile_context = build_profile_context(profile)
+            if profile_context:
+                system_prompt += profile_context
+                app_logger.info(f"Profile context injected for: {profile.get('name', 'unknown')}")
+        except Exception as profile_err:
+            app_logger.warning(f"Could not load farmer profile: {profile_err}")
+        # ── End profile injection ───────────────────────────────────
 
         if lang == "hi":
             system_prompt += " Respond in Hindi (Devanagari script)."
@@ -955,6 +967,38 @@ def health_check():
         "weather_configured": bool(WEATHER_API_KEY)
     }), 200
 
+@app.route("/api/profile", methods=["GET", "POST"])
+@log_endpoint("/api/profile")
+def farmer_profile_endpoint():
+    """
+    GET  /api/profile  → returns the saved farmer profile
+    POST /api/profile  → saves/updates the farmer profile
+    """
+    if request.method == "GET":
+        profile = load_profile()
+        return jsonify({"status": "success", "profile": profile}), 200
+
+    # POST
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"status": "error", "message": "No JSON body received"}), 400
+
+        is_valid, err_msg = validate_profile(data)
+        if not is_valid:
+            return jsonify({"status": "error", "message": err_msg}), 422
+
+        # Merge with existing profile (partial updates allowed)
+        existing = load_profile()
+        existing.update({k: v for k, v in data.items() if k not in ("created_at", "updated_at")})
+        saved = save_profile(existing)
+
+        app_logger.info(f"Farmer profile saved for: {saved.get('name', 'Unknown')}")
+        return jsonify({"status": "success", "profile": saved}), 200
+
+    except Exception as e:
+        log_error_with_context(e, {"endpoint": "/api/profile"})
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == "__main__":
     # Create models directory if it doesn't exist (from new version)
